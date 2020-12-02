@@ -13,3 +13,17 @@ Feature: Sign In
     And I fill in "session[password]" with "wierapaw"
     And I click button "commit"
     Then I should see "Logged in succesfully"
+
+  Scenario: Sign in validations
+    When I fill in "session[email]" with "wierapaw@o2.pl"
+    And I fill in "session[password]" with "wierapa"
+    And I click button "commit"
+    Then I should see "There was something wrong with your login details"
+    When I fill in "session[email]" with "wierapaw@o2.ply"
+    And I fill in "session[password]" with "wierapaw"
+    And I click button "commit"
+    Then I should see "There was something wrong with your login details"
+    When I fill in "session[email]" with "wiera.o2.pl"
+    And I fill in "session[password]" with "wierapaw"
+    And I click button "commit"
+    Then I should see "There was something wrong with your login details"
